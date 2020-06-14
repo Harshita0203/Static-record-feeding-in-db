@@ -1,0 +1,35 @@
+<?php
+
+    $host = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+    $dbname = "db1.php";
+
+    //create a connection
+    $conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+
+    if (mysqli_connect_error()) 
+    {
+     die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
+    } 
+    
+    else 
+    {
+       echo "Connected successfully.";
+    }
+
+   //Enter data into the db
+      $sql = "INSERT INTO data (name,address,email,mobile,password,cpassword) 
+      VALUES ('Harshita','India','hg@gmail.com','9912329192','020202','020202')";
+
+
+     if (mysqli_query($conn, $sql)) 
+      {
+      echo "New record inserted into database successfully";
+       } 
+     else 
+       {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+       }
+     mysqli_close($conn);
+?>
